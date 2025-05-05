@@ -1,14 +1,23 @@
 # Example file showing a basic pygame "game loop"
 import pygame
+from pygame.locals import *
 import random
+from app import *
+from scene import Scene
+from node import *
 #from board import Game_Board
 
-# pygame setup
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
-global font
+class Cluedo(App):
+    def __init__(self):
+        super().__init__()
+        Scene(img_folder='./assets', bgFile='Clue2012-board-ezgif.com-webp-to-jpg-converter.jpg', caption='Cluedo Board')
+        App.scenes[0].nodes.append(Node())
+        App.scenes[0].nodes.append(Node())
+        App.scenes[0].nodes.append(Node())
+
+if __name__ == '__main__':
+    Cluedo().run()
+"""global font
 font = pygame.font.Font(None,40)
 #global b
 #b = Game_Board()
@@ -70,15 +79,15 @@ while running:
                 draw_pile.remove(player.cards[-1])
                 player.room = random.choice(rooms)
     
-    write("""Game contition:\n
+    write(\"""Game contition:\n
         Player 1: Nothing Revealed, in Bedroom\n
         Player 2: Nothing Revealed, in Bathroom\n
         Player 3: Nothing Revealed, in Game Room\n
         Player 4: Nothing Revealed, in Living Room\n
-        No Extra Cards""")
+        No Extra Cards\""")
     # flip() the display to put your work on screen
     pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60
 
-pygame.quit()
+pygame.quit()"""
